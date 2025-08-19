@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ceras - Otuzco</title>
+
+  <!-- Font Awesome para íconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    :root{
+      --card-h: 520px;       /* altura fija de cada tarjeta */
+      --desc-lines: 5;       /* nº de líneas visibles antes de "Ver más" */
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f6f7f9; /* gris claro profesional */
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .galeria-container {
+      padding: 20px;
+      background-color: #e3e8ed; /* gris azulado elegante */
+      border-bottom: 2px solid #d0d6dc;
+    }
+
+    .galeria-container h1 {
+      font-size: 36px;
+      color: #2f3e46; /* azul petróleo */
+      margin-bottom: 30px;
+    }
+
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 1024px) {
+      .galeria { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .galeria { grid-template-columns: 1fr; }
+    }
+
+    .item-cuadro {
+      background-color: #ffffff;
+      border: 1px solid #d0d6dc;
+      border-radius: 10px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+      height: var(--card-h);      
+      overflow: hidden;           
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .item-cuadro:hover { 
+      transform: scale(1.02); 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .item-cuadro img {
+      width: 100%;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      aspect-ratio: 4 / 3;        
+      object-fit: cover;
+    }
+
+    .info-cuadro {
+      text-align: left;
+      padding: 0 5px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .info-cuadro p {
+      margin: 0;
+      font-size: 14px;
+      color: #334155; /* gris azulado oscuro */
+    }
+
+  /* Recorte elegante de la descripción */
+  .descripcion{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--desc-lines); 
+    overflow: hidden;
+    position: relative;
+
+    mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+  }
+
+  .descripcion.expandido{
+    -webkit-line-clamp: initial;  
+    display: block;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+
+    .acciones-cuadro {
+      margin-top: auto;  
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 10px;
+    }
+
+    .btn-precio {
+      background-color: #d97941;
+      border: none;
+      padding: 10px 18px;   /* más alto y ancho */
+      font-size: 16px;      /* texto más grande */
+      border-radius: 8px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .btn-carrito {
+      background-color: #2f3e46; /* azul petróleo oscuro */
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background-color 0.2s;
+    }
+    .btn-carrito:hover { background-color: #1e2b30; }
+    .btn-carrito i { font-size: 16px; }
+
+    .btn-ver-mas {
+      margin-top: 6px;
+      align-self: flex-start;
+      background: none;
+      border: none;
+      color: #b23a48; /* rojo vino elegante */
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    a.volver {
+      text-decoration: none;
+      color: #b23a48;
+      font-weight: bold;
+      font-size: 16px;
+      transition: color 0.2s;
+    }
+    a.volver:hover { color: #7d2833; }
+
+  </style>
+</head>
+<body>
+  <div class="galeria-container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <a href="index.html" class="volver">
+        <i class="fas fa-arrow-left"></i> Retroceder
+      </a>
+      <h1 style="flex-grow: 1; margin: 0; text-align: center;">Cirios y Ceras Otuzcanos</h1>
+      <span style="width: 100px;"></span>
+    </div>
+  </div>
+
+  <div class="galeria">
+    <div class="item-cuadro">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmKJIvrAvWX1tcqfHUXWIB1Qqd5fNsTgWL3A&s" alt="Paisaje Andino">
+      <div class="info-cuadro">
+        <p><strong>Cirios Coloridos</strong></p>
+        <p>Hermosos cirios artesanales largas y coloridas, dispuestas en posición vertical y alineadas en un soporte. Están decoradas con vivos tonos de amarillo, azul y rojo, intercalados con relieves dorados y detalles en blanco que realzan su apariencia.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 22</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="imagenes/ceras/adas.jpg" alt="Niña Otuzcana">
+      <div class="info-cuadro">
+        <p><strong>Velas artesanales</strong></p>
+        <p>Se aprecia una vela artesanal de color blanco, parcialmente consumida, cuyo diseño combina tres capas distintas: en la parte superior se encuentra la cera blanca derretida con el pabilo ya usado, en el centro una franja de cristales traslúcidos similares a la sal gruesa, y en la base un conjunto de pequeñas piedras verdes y turquesa que aportan un aspecto decorativo; la vela descansa sobre una superficie de piedra clara mientras la cera derretida escurre suavemente por un costado y se acumula en un charco sólido a sus pies, creando una composición que transmite calma y un aire natural y orgánico.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 7</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="imagenes/ceras/ambre.jpg" alt="Templo Colonial">
+      <div class="info-cuadro">
+        <p><strong>Velas</strong></p>
+        <p>Conjunto de velas y llamas en diferentes formas y estados, sobre un fondo transparente con patrón de cuadros grises. En la parte izquierda se presentan tres tipos de velas: cilíndrica, rectangular y cúbica, primero apagadas y luego encendidas con una llama brillante en la parte superior, seguidas de la misma serie ya apagada con un pequeño rastro de humo ascendiendo.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 5</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="imagenes/ceras/amor.jpg" alt="Bordado de los Andes">
+      <div class="info-cuadro">
+        <p><strong>Velas decorativas</strong></p>
+        <p>Vela decorativa de color rosa con forma de flor, específicamente de una rosa en plena apertura, cuyos pétalos están esculpidos en cera de manera detallada y realista. En el centro de la flor se encuentra la mecha encendida, con una llama amarilla que ilumina suavemente la parte superior, dando la impresión de que la propia rosa está viva y brillando. Su diseño combina la función práctica de una vela con un aspecto ornamental delicado y romántico.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 6</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="imagenes/ceras/ceera.jpg" alt="Mercado Artesanal">
+      <div class="info-cuadro">
+        <p><strong>Velas artesanales</strong></p>
+        <p>Conjunto de velas artesanales elaboradas en cera de abeja de color amarillo intenso, dispuestas sobre una superficie de madera clara. Cada vela tiene un diseño particular: una cilíndrica con relieves de flores, una esférica cubierta de pequeñas rosas, una en forma hexagonal que simula un panal con abejas en relieve, y varias pequeñas tipo tealight en recipientes transparentes.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 12</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="imagenes/ceras/cera.jpg" alt="Tierra de Colores">
+      <div class="info-cuadro">
+        <p><strong>Cera artesanal decorativa</strong></p>
+        <p>Tres velas decorativas de color rosa y con un diseño en forma de esfera recubierta de relieves que imitan pétalos de rosas en plena floración. Cada vela tiene una mecha en el centro de la parte superior con una llama amarilla brillante que contrasta con el tono suave de la cera. </p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 20</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Aplica recorte y botón "Ver más" donde sea necesario
+    function aplicarTruncado() {
+      document.querySelectorAll('.item-cuadro .info-cuadro').forEach(info => {
+        const desc = info.querySelector('p:nth-of-type(2)');
+        if (!desc) return;
+
+        // Marca como descripción (para aplicar clamp por CSS)
+        desc.classList.add('descripcion');
+
+        // Forzamos una medición tras render (rAF asegura layout listo)
+        requestAnimationFrame(() => {
+          // Si ya existe botón, no duplicar
+          if (info.querySelector('.btn-ver-mas')) return;
+
+          const needsToggle = desc.scrollHeight > desc.clientHeight + 2;
+          if (needsToggle) {
+            const btn = document.createElement('button');
+            btn.className = 'btn-ver-mas';
+            btn.type = 'button';
+            btn.textContent = 'Ver más';
+            btn.addEventListener('click', () => {
+              const expanded = desc.classList.toggle('expandido');
+              btn.textContent = expanded ? 'Ver menos' : 'Ver más';
+            });
+            info.appendChild(btn);
+          }
+        });
+      });
+    }
+
+    // Ejecutar cuando el DOM está listo y también tras cargar imágenes
+    document.addEventListener('DOMContentLoaded', aplicarTruncado);
+    window.addEventListener('load', aplicarTruncado);
+
+    // Re-aplicar si cambia el tamaño de la ventana (responsivo)
+    let resizeTO;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTO);
+      resizeTO = setTimeout(() => {
+        // Quitar botones existentes y recalcular
+        document.querySelectorAll('.btn-ver-mas').forEach(b => b.remove());
+        document.querySelectorAll('.descripcion').forEach(d => d.classList.remove('expandido'));
+        aplicarTruncado();
+      }, 150);
+    });
+  </script>
+</body>
+</html>

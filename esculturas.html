@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Esculturas - Otuzco</title>
+
+  <!-- Font Awesome para íconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    :root{
+      --card-h: 520px;      
+      --desc-lines: 5;      
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f4f1; /* beige claro */
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .galeria-container {
+      padding: 20px;
+      background-color: #e6e0d4; /* arena suave */
+      border-bottom: 2px solid #d1c7b8;
+    }
+
+    .galeria-container h1 {
+      font-size: 36px;
+      color: #3e3a39; /* gris pizarra */
+      margin-bottom: 30px;
+    }
+
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 1024px) {
+      .galeria { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .galeria { grid-template-columns: 1fr; }
+    }
+
+    .item-cuadro {
+      background-color: #ffffff;
+      border: 1px solid #d1c7b8;
+      border-radius: 10px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+      height: var(--card-h);      
+      overflow: hidden;           
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .item-cuadro:hover { 
+      transform: scale(1.02); 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .item-cuadro img {
+      width: 100%;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      aspect-ratio: 4 / 3;        
+      object-fit: cover;
+    }
+
+    .info-cuadro {
+      text-align: left;
+      padding: 0 5px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .info-cuadro p {
+      margin: 0;
+      font-size: 14px;
+      color: #4a4947; /* gris cálido */
+    }
+
+    /* Recorte elegante de la descripción */
+    .descripcion{
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: var(--desc-lines); 
+      overflow: hidden;
+      position: relative;
+      mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+      -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+    }
+
+    .descripcion.expandido{
+      -webkit-line-clamp: initial;  
+      display: block;
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+
+    .acciones-cuadro {
+      margin-top: auto;  
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 10px;
+    }
+
+    .btn-precio {
+      background-color: #d97941;
+      border: none;
+      padding: 10px 18px;   /* más alto y ancho */
+      font-size: 16px;      /* texto más grande */
+      border-radius: 8px;
+      font-weight: bold;
+      color: white;
+    }
+
+
+    .btn-carrito {
+      background-color: #3e3a39; /* gris pizarra oscuro */
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background-color 0.2s;
+    }
+    .btn-carrito:hover { background-color: #2b2727; }
+    .btn-carrito i { font-size: 16px; }
+
+    .btn-ver-mas {
+      margin-top: 6px;
+      align-self: flex-start;
+      background: none;
+      border: none;
+      color: #a0412b; /* terracota oscuro */
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    a.volver {
+      text-decoration: none;
+      color: #a0412b;
+      font-weight: bold;
+      font-size: 16px;
+      transition: color 0.2s;
+    }
+    a.volver:hover { color: #702e1f; }
+
+  </style>
+</head>
+<body>
+  <div class="galeria-container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <a href="index.html" class="volver">
+        <i class="fas fa-arrow-left"></i> Retroceder
+      </a>
+      <h1 style="flex-grow: 1; margin: 0; text-align: center;">Esculturas Otuzcanas</h1>
+      <span style="width: 100px;"></span>
+    </div>
+  </div>
+
+  <div class="galeria">
+    <div class="item-cuadro">
+      <img src="imagenes/esculturas/zack.jpg" alt="Paisaje Andino">
+      <div class="info-cuadro">
+        <p><strong>Escultura de barro</strong></p>
+        <p>Figuras artesanales hechas de barro, representando músicos tradicionales. Cada personaje lleva un gran sombrero con detalles en relieve y tiene ojos redondos muy expresivos que les dan un aspecto simpático y caricaturesco. Elaborados con arsilla, mucha dedicacion y talento</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 30</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="imagenes/esculturas/zaro.jpg" alt="Niña Otuzcana">
+      <div class="info-cuadro">
+        <p><strong>Cerámica</strong></p>
+        <p>Figura de cerámica prehispánica, elaborada en barro con restos de pigmento rojo. La escultura representa a un personaje de rasgos humanos sentado, con un gran tocado semicircular en la cabeza y adornos laterales que parecen orejeras. Su rostro presenta una expresión solemne, con los ojos entrecerrados y la boca abierta.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 60</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="imagenes/esculturas/zat.JPG" alt="Templo Colonial">
+      <div class="info-cuadro">
+        <p><strong>Gato artesanal</strong></p>
+        <p>Escultura de un gato hecha en barro. La figura representa al animal en posición recostada, con las patas delanteras recogidas y el cuerpo relajado. Los detalles de la textura del pelaje han sido realizados con incisiones y marcas en la superficie de la arcilla, lo que le da un aspecto más realista.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 45</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="imagenes/esculturas/ziro.jpg" alt="Bordado de los Andes">
+      <div class="info-cuadro">
+        <p><strong>Perro</strong></p>
+        <p>Figura de barro en forma de perro, elaborada con un estilo artesanal prehispánico. La escultura representa al animal en posición erguida, con la cabeza levantada y la boca abierta, como si estuviera ladrando o aullando. Elabora con material llamado arcilla.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 27</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="imagenes/esculturas/zero.jpg" alt="Mercado Artesanal">
+      <div class="info-cuadro">
+        <p><strong>Platos</strong></p>
+        <p>Gran variedad de artesanías de barro vidriado, principalmente ollas, cazuelas, platos y tazones, dispuestos en filas sobre una superficie. Todas las piezas tienen el característico color marrón rojizo del barro cocido y están decoradas con diseños pintados a mano: algunos con flores blancas de pétalos simples, otros con franjas negras, verdes o motivos naturales.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 50</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Aplica recorte y botón "Ver más" donde sea necesario
+    function aplicarTruncado() {
+      document.querySelectorAll('.item-cuadro .info-cuadro').forEach(info => {
+        const desc = info.querySelector('p:nth-of-type(2)');
+        if (!desc) return;
+
+        // Marca como descripción (para aplicar clamp por CSS)
+        desc.classList.add('descripcion');
+
+        // Forzamos una medición tras render (rAF asegura layout listo)
+        requestAnimationFrame(() => {
+          // Si ya existe botón, no duplicar
+          if (info.querySelector('.btn-ver-mas')) return;
+
+          const needsToggle = desc.scrollHeight > desc.clientHeight + 2;
+          if (needsToggle) {
+            const btn = document.createElement('button');
+            btn.className = 'btn-ver-mas';
+            btn.type = 'button';
+            btn.textContent = 'Ver más';
+            btn.addEventListener('click', () => {
+              const expanded = desc.classList.toggle('expandido');
+              btn.textContent = expanded ? 'Ver menos' : 'Ver más';
+            });
+            info.appendChild(btn);
+          }
+        });
+      });
+    }
+
+    // Ejecutar cuando el DOM está listo y también tras cargar imágenes
+    document.addEventListener('DOMContentLoaded', aplicarTruncado);
+    window.addEventListener('load', aplicarTruncado);
+
+    // Re-aplicar si cambia el tamaño de la ventana (responsivo)
+    let resizeTO;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTO);
+      resizeTO = setTimeout(() => {
+        // Quitar botones existentes y recalcular
+        document.querySelectorAll('.btn-ver-mas').forEach(b => b.remove());
+        document.querySelectorAll('.descripcion').forEach(d => d.classList.remove('expandido'));
+        aplicarTruncado();
+      }, 150);
+    });
+  </script>
+</body>
+</html>

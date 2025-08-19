@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cuadros - Artesanía Otuzco</title>
+
+  <!-- Font Awesome para íconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    :root{
+      --card-h: 520px;       /* altura fija de cada tarjeta */
+      --desc-lines: 5;       /* nº de líneas visibles antes de "Ver más" */
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #eaf2f2fa;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .galeria-container {
+      padding: 20px;
+      background-color: #b5e1e3;
+    }
+
+    .galeria-container h1 {
+      font-size: 36px;
+      color: #4C6770;
+      margin-bottom: 30px;
+    }
+
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 1024px) {
+      .galeria { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .galeria { grid-template-columns: 1fr; }
+    }
+
+    .item-cuadro {
+      background-color: #ffffff;
+      border: 2px solid #72400e;
+      border-radius: 10px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s;
+      height: var(--card-h);      /* altura fija */
+      overflow: hidden;           /* evita desbordes fuera de la tarjeta */
+    }
+    .item-cuadro:hover { transform: scale(1.03); }
+
+    .item-cuadro img {
+      width: 100%;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      aspect-ratio: 4 / 3;        /* altura consistente de imágenes */
+      object-fit: cover;
+    }
+
+    .info-cuadro {
+      text-align: left;
+      padding: 0 5px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .info-cuadro p {
+      margin: 0;
+      font-size: 14px;
+      color: #4C6770;
+    }
+
+  /* Recorte elegante de la descripción */
+  .descripcion{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--desc-lines);  /* nº de líneas */
+    overflow: hidden;
+    position: relative;
+
+    /* Degradado al final para sugerir que hay más texto */
+    mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+  }
+
+  /* Estado expandido: mostrar todo el texto */
+  .descripcion.expandido{
+    /* Quita el clamp */
+    -webkit-line-clamp: initial;   /* (en lugar de 'unset') */
+    /* Para asegurar que no queden restos del modo -webkit-box */
+    display: block;
+
+    /* Quita el degradado */
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+    .acciones-cuadro {
+      margin-top: auto;  /* Empuja las acciones al fondo de la tarjeta */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 10px;
+    }
+
+    .btn-precio {
+      background-color: #d97941;
+      border: none;
+      padding: 10px 18px;   /* más alto y ancho */
+      font-size: 16px;      /* texto más grande */
+      border-radius: 8px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .btn-carrito {
+      background-color: #4C6770;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-carrito:hover { background-color: #3b555e; }
+    .btn-carrito i { font-size: 16px; }
+
+    /* Botón Ver más / Ver menos */
+    .btn-ver-mas {
+      margin-top: 6px;
+      align-self: flex-start;
+      background: none;
+      border: none;
+      color: #cd2f49;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="galeria-container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <a href="index.html" style="text-decoration: none; color: #cd2f49; font-weight: bold; font-size: 16px;">
+        <i class="fas fa-arrow-left"></i> Retroceder
+      </a>
+      <h1 style="flex-grow: 1; margin: 0; text-align: center; font-size: 36px; color: #4C6770;">Cuadros y Pinturas Artesanales</h1>
+      <span style="width: 100px;"></span>
+    </div>
+  </div>
+
+  <div class="galeria">
+    <div class="item-cuadro">
+      <img src="imagenes/cuadros/faro.jpg" alt="Paisaje Andino">
+      <div class="info-cuadro">
+        <p><strong>Corazón de Jesucristo</strong></p>
+        <p>La imagen muestra un cuadro religioso enmarcado con un marco dorado ornamentado. En el centro se representa a Jesucristo con túnica roja y manto azul, levantando su mano derecha en gesto de bendición, mientras su mano izquierda señala su pecho, donde se encuentra el Sagrado Corazón rodeado de rayos de luz, símbolo de amor y fe. Alrededor de su cabeza se distingue un halo luminoso, signo de santidad y divinidad. El estilo de la pintura es clásico, con colores suaves y detalles realistas, transmitiendo una sensación de paz, devoción y espiritualidad.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 37</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="imagenes/cuadros/fla.jpg" alt="Niña Otuzcana">
+      <div class="info-cuadro">
+        <p><strong>Virgen de la Puerta</strong></p>
+        <p>La imagen muestra una representación de la Inmaculada Virgen de la Puerta de Otuzco, venerada en Perú. La figura aparece dentro de una urna de vidrio enmarcada en madera y decorada con detalles dorados y rojos en la parte superior, donde se lee la frase: “Inmaculada Virgen de la Puerta Otuzco, bendice mi hogar y trabajo”</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 28</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="imagenes/cuadros/flack.jpg" alt="Templo Colonial">
+      <div class="info-cuadro">
+        <p><strong>Última Cena</strong></p>
+        <p>La imagen muestra una representación de La Última Cena, una de las pinturas más reconocidas de la historia, atribuida a Leonardo da Vinci. En la escena, Jesucristo se encuentra en el centro de la mesa, vestido con túnica roja y manto azul, extendiendo sus manos mientras los doce apóstoles lo rodean en grupos de tres, expresando asombro, dudas y reacciones intensas tras escuchar sus palabras sobre la traición.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 50</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="imagenes/cuadros/flores.jpg" alt="Bordado de los Andes">
+      <div class="info-cuadro">
+        <p><strong>Santa Rosa de Lima</strong></p>
+        <p>La imagen muestra una pintura de estilo oscuro y expresivo enmarcada en un marco dorado ornamentado. En el centro se aprecia la figura de una mujer con hábito blanco, un rosario colgando de su cuello y una corona de flores en la cabeza. Su rostro, de expresión seria e intensa, contrasta con el aura mística que rodea la escena.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 34</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="imagenes/cuadros/fuerte.jpg" alt="Mercado Artesanal">
+      <div class="info-cuadro">
+        <p><strong>Virgen de la Puerta</strong></p>
+        <p>La imagen muestra un retrato enmarcado de la Santísima Virgen de la Puerta de Otuzco (Perú), una de las advocaciones marianas más veneradas en la región. La Virgen aparece con un manto blanco y rojo ricamente decorado con bordados dorados, además de numerosos collares y cadenas que cuelgan sobre su pecho como ofrendas de fe.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 17</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="imagenes/cuadros/loma.jpg" alt="Tierra de Colores">
+      <div class="info-cuadro">
+        <p><strong>Hacienda Colonial</strong></p>
+        <p>La imagen muestra una pintura colorida de un paisaje rural con arquitectura tradicional. En primer plano se aprecia un camino empedrado que conduce hacia un arco central, enmarcado por paredes blancas con techos de tejas rojas. A los costados, casas de estilo colonial están adornadas con balcones y flores vibrantes, especialmente bugambilias en tonos rosados que trepan por las fachadas.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 85</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="imagenes/cuadros/lotos.jpg" alt="Fiesta Patronal">
+      <div class="info-cuadro">
+        <p><strong>Costa del Sol</strong></p>
+        <p>La imagen muestra una pintura vibrante y colorida de un paisaje mediterráneo. En primer plano se observa un camino empedrado en tonos rosados y violetas que conduce entre muros blancos adornados con abundantes flores de colores intensos: amarillas, naranjas, rojas y moradas.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 92</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="https://www.ellider.pe/wp-content/uploads/2023/06/4.jpg" alt="Camino a Otuzco">
+      <div class="info-cuadro">
+        <p><strong>Barrio Ramon Castilla</strong></p>
+        <p>Una carretera clara serpentea desde el primer plano hacia un pueblo que descansa entre colinas.
+          Tejados de teja y fachadas terracota forman un mosaico cálido, avivado por parches de verde.
+          A la orilla del camino, plantas robustas y una casa de muros envejecidos atestiguan el ritmo cotidiano.
+          Al fondo, montañas onduladas cierran la escena bajo un cielo limpio.
+          La pincelada suelta y enérgica —en ocres, verdes y azules— aporta profundidad y movimiento, invitando a seguir la curva del camino y respirar la calma del lugar.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 490</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="https://www.ellider.pe/wp-content/uploads/2023/06/1.jpg" alt="Camino a Otuzco">
+      <div class="info-cuadro">
+        <p><strong>Camino Rural</strong></p>
+        <p>El sendero se abre entre montañas y conduce la mirada hacia un pueblo escondido al pie de la colina. La pincelada enérgica, los tonos terrosos y el cielo despejado transmiten la fuerza del paisaje andino. Una obra que captura la calma y la grandeza de la sierra, invitando a contemplar su esencia natural.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 370</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="https://www.ellider.pe/wp-content/uploads/2023/06/2.jpg" alt="Camino a Otuzco">
+      <div class="info-cuadro">
+        <p><strong>Puente Arequipa</strong></p>
+        <p>Un camino de tierra conduce entre montañas hacia el corazón del pueblo, donde se alzan con majestuosidad las torres de la iglesia. Las casas de tonos cálidos y el puente sencillo completan una escena que respira tradición y calma. La pincelada amplia y los contrastes de luz revelan la esencia vibrante de la vida andina.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 280</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="https://www.ellider.pe/wp-content/uploads/2023/06/7.jpg" alt="Camino a Otuzco">
+      <div class="info-cuadro">
+        <p><strong>Calle La Libertad</strong></p>
+        <p>Una calle empinada se abre paso entre casas de tejas rojas y balcones antiguos, conduciendo la vista hacia la iglesia y el arco dorado que enmarcan el horizonte. El contraste entre luces y sombras revela la vida de un pueblo andino que respira historia y tradición. Una obra que atrapa la esencia urbana de la sierra con carácter y autenticidad.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 230</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="https://www.ellider.pe/wp-content/uploads/2023/06/6.jpg" alt="Camino a Otuzco">
+      <div class="info-cuadro">
+        <p><strong>Rio Pollo</strong></p>
+        <p>El río refleja la luz del cielo mientras rodea casas de adobe que se asientan en la ladera. Entre árboles altos y montañas, la escena transmite frescura y serenidad. La pincelada viva y los colores intensos capturan la esencia de la vida rural andina en armonía con la naturaleza.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 180</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="https://www.ellider.pe/wp-content/uploads/2023/06/5.jpg" alt="Camino a Otuzco">
+      <div class="info-cuadro">
+        <p><strong>Escalinatas Rústicas</strong></p>
+        <p>Desde una calle empinada, la vista se abre hacia un pueblo andino rodeado de montañas. Las casas de colores con techos de teja enmarcan el horizonte, donde destacan las torres de la iglesia. La luz intensa resalta las texturas y sombras, dando vida a una escena que transmite autenticidad y la esencia vibrante de la sierra.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 320</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="https://www.ellider.pe/wp-content/uploads/2023/06/3.jpg" alt="Camino a Otuzco">
+      <div class="info-cuadro">
+        <p><strong>Mi Hermoso Otuzco</strong></p>
+        <p>Desde lo alto, la vista revela un pueblo que despierta entre montañas bañadas por la luz del amanecer. Los techos rojizos contrastan con el verde de los árboles y el azul profundo de la naturaleza circundante. La atmósfera suave y luminosa transmite serenidad, como un instante detenido en la quietud andina.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 440</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Aplica recorte y botón "Ver más" donde sea necesario
+    function aplicarTruncado() {
+      document.querySelectorAll('.item-cuadro .info-cuadro').forEach(info => {
+        const desc = info.querySelector('p:nth-of-type(2)');
+        if (!desc) return;
+
+        // Marca como descripción (para aplicar clamp por CSS)
+        desc.classList.add('descripcion');
+
+        // Forzamos una medición tras render (rAF asegura layout listo)
+        requestAnimationFrame(() => {
+          // Si ya existe botón, no duplicar
+          if (info.querySelector('.btn-ver-mas')) return;
+
+          const needsToggle = desc.scrollHeight > desc.clientHeight + 2;
+          if (needsToggle) {
+            const btn = document.createElement('button');
+            btn.className = 'btn-ver-mas';
+            btn.type = 'button';
+            btn.textContent = 'Ver más';
+            btn.addEventListener('click', () => {
+              const expanded = desc.classList.toggle('expandido');
+              btn.textContent = expanded ? 'Ver menos' : 'Ver más';
+            });
+            info.appendChild(btn);
+          }
+        });
+      });
+    }
+
+    // Ejecutar cuando el DOM está listo y también tras cargar imágenes
+    document.addEventListener('DOMContentLoaded', aplicarTruncado);
+    window.addEventListener('load', aplicarTruncado);
+
+    // Re-aplicar si cambia el tamaño de la ventana (responsivo)
+    let resizeTO;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTO);
+      resizeTO = setTimeout(() => {
+        // Quitar botones existentes y recalcular
+        document.querySelectorAll('.btn-ver-mas').forEach(b => b.remove());
+        document.querySelectorAll('.descripcion').forEach(d => d.classList.remove('expandido'));
+        aplicarTruncado();
+      }, 150);
+    });
+  </script>
+</body>
+</html>

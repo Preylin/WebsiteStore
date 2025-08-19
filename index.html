@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artesanía Otuzco 2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Nunito', sans-serif;
+      scroll-behavior: smooth;
+    }
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+    .sidebar {
+      width: 200px;
+      background: #4C6770;
+      color: white;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: fixed;
+      height: 100vh;
+    }
+    .sidebar h2 {
+      margin-bottom: 15px;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+    .sidebar li {
+      margin: 14px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      padding: 6px 10px;
+      border-radius: 6px;
+    }
+    .sidebar li a {
+      text-decoration: none;
+      color: #FDF7E5;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sidebar li:hover {
+      background-color: #849DA2;
+      transform: translateX(5px);
+    }
+    .contacto {
+      margin-top: auto;
+    }
+    .whatsapp-btn {
+      background-color: #25d366;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .whatsapp-btn:hover {
+      background-color: #1ebd5b;
+    }
+    .whatsapp-btn img {
+      width: 24px;
+    }
+    main {
+      margin-left: 200px;
+      overflow-y: auto;
+      width: calc(100% - 200px);
+    }
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 40px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+    section > * {
+      z-index: 1;
+    }
+    h1, h2, p {
+      margin-bottom: 20px;
+      animation: fadeInUp 1s ease-out;
+    }
+    @keyframes fadeInUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .btn {
+      padding: 12px 25px;
+      background-color: #D8AD82;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 16px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    .iconos {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 20px;
+      animation: fadeInUp 1.2s ease-out;
+    }
+    .iconos i {
+      font-size: 40px;
+      color: #fff;
+      transition: transform 0.3s;
+    }
+    .iconos i:hover {
+      transform: scale(1.2);
+      color: #ffd700;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div>
+        <h2 style="font-size: 32px;">Menú</h2>
+        <h3 style="color: #ffd700;">Productos:</h3>
+        <ul>
+          <li><a href="cuadros.html"><i class="fas fa-image"></i> Cuadros</a></li>
+          <li><a href="esculturas.html"><i class="fas fa-chess-rook"></i> Esculturas</a></li>
+          <li><a href="tejidos.html"><i class="fas fa-hand-sparkles"></i> Tejidos</a></li>
+          <li><a href="ceras.html"><i class="fas fa-fire"></i> Ceras</a></li>
+        </ul>
+      </div>
+      <div class="contacto">
+        <p>Contacto:</p>
+        <a class="whatsapp-btn" href="https://wa.me/51906790282" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">WhatsApp
+        </a>
+      </div>
+    </aside>
+    <main>
+      <section id="inicio" style="background-image: url('https://www.ytuqueplanes.com/imagenes/fotos/novedades/Interna-Conoce-Otuzco_1.webp');">
+        <h1>ARTESANÍA OTUZCO</h1>
+        <h2>2025 - Tradición que se transforma en arte</h2>
+        <a href="#productos" class="btn">Explorar productos</a>
+      </section>
+
+      <section style="background-image: url('https://scontent.ftru3-1.fna.fbcdn.net/v/t1.6435-9/75226487_2425464857741765_6000901075878543360_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_ohc=_2lQeoqyL4wQ7kNvwElC49v&_nc_oc=AdnN3oSvGKvV_-QlgmTFFX11YYxQ8Vzb2VaztLHXRFdZBLx-TO9G5r053OjgNPOjGG60chorVmKmGp8jkgYN0ugl&_nc_zt=23&_nc_ht=scontent.ftru3-1.fna&_nc_gid=9VTrOfdPy-gtY4Qlr3_csw&oh=00_AfQTqo1_o-wqrvmNSuDOr9dpFqYLxWjKq8cgwcWwYwe5_w&oe=68AF7B30');">
+        <h2>¿Qué ofrecemos?</h2>
+        <p>Ofrecemos cuadros, esculturas, manualidades y ceras artesanales hechas a mano por talentosos artistas otuzcanos.</p>
+        <div class="iconos">
+          <a href="cuadros.html"><i class="fas fa-image"></i> Cuadros</a>
+          <a href="esculturas.html"><i class="fas fa-chess-rook"></i> Esculturas</a>
+          <a href="tejidos.html"><i class="fas fa-hand-sparkles"></i> Tejidos</a>
+          <a href="ceras.html"><i class="fas fa-fire"></i> Ceras</a>
+        </div>
+      </section>
+
+      <section style="background-image: url('https://sientetrujillo.com/wp-content/uploads/2021/03/IMG_5261-Pano-scaled-e1615931667640.jpg');">
+        <h2>Nuestra identidad</h2>
+        <p>Honramos la cultura andina, promovemos el comercio justo y valoramos lo auténtico y hecho a mano.</p>
+        <div class="iconos">
+          <i class="fas fa-mountain"></i>
+          <i class="fas fa-users"></i>
+          <i class="fas fa-leaf"></i>
+        </div>
+      </section>
+
+      <section id="productos" style="background-image: url('https://ddclalibertad.gob.pe/wp-content/uploads/2022/01/32.jpg');">
+        <h2>Empieza tu viaje artístico</h2>
+        <p>Descubre piezas únicas y lleva contigo una parte de Otuzco.</p>
+        <a href="cuadros.html" class="btn">Ver galería</a>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tejidos - Otuzco</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    :root{
+      --card-h: 520px;
+      --desc-lines: 5;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fdfcf9; /* lino claro */
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .galeria-container {
+      padding: 20px;
+      background-color: #f1ece4; /* tono algodón crudo */
+      border-bottom: 2px solid #e0d8cc;
+    }
+
+    .galeria-container h1 {
+      font-size: 36px;
+      color: #7b2c34; /* granate profundo */
+      margin-bottom: 30px;
+    }
+
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 1024px) {
+      .galeria { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .galeria { grid-template-columns: 1fr; }
+    }
+
+    .item-cuadro {
+      background-color: #ffffff;
+      border: 1px solid #e0d8cc;
+      border-radius: 10px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+      height: var(--card-h);
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .item-cuadro:hover { 
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .item-cuadro img {
+      width: 100%;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .info-cuadro {
+      text-align: left;
+      padding: 0 5px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .info-cuadro p {
+      margin: 0;
+      font-size: 14px;
+      color: #4a4a47; /* gris neutro */
+    }
+
+    /* Recorte elegante */
+    .descripcion{
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: var(--desc-lines);
+      overflow: hidden;
+      position: relative;
+      mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+      -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+    }
+
+    .descripcion.expandido{
+      -webkit-line-clamp: initial;
+      display: block;
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+
+    .acciones-cuadro {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 10px;
+    }
+
+    .btn-precio {
+      background-color: #d97941;
+      border: none;
+      padding: 10px 18px;   /* más alto y ancho */
+      font-size: 16px;      /* texto más grande */
+      border-radius: 8px;
+      font-weight: bold;
+      color: white;
+    }
+
+
+    .btn-carrito {
+      background-color: #556b2f; /* verde oliva oscuro */
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background-color 0.2s;
+    }
+    .btn-carrito:hover { background-color: #3d4d21; }
+    .btn-carrito i { font-size: 16px; }
+
+    .btn-ver-mas {
+      margin-top: 6px;
+      align-self: flex-start;
+      background: none;
+      border: none;
+      color: #7b2c34; /* granate */
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    a.volver {
+      text-decoration: none;
+      color: #7b2c34;
+      font-weight: bold;
+      font-size: 16px;
+      transition: color 0.2s;
+    }
+    a.volver:hover { color: #531d23; }
+  </style>
+</head>
+<body>
+  <div class="galeria-container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <a href="index.html" class="volver">
+        <i class="fas fa-arrow-left"></i> Retroceder
+      </a>
+      <h1 style="flex-grow: 1; margin: 0; text-align: center;">Tejidos Otuzcanos</h1>
+      <span style="width: 100px;"></span>
+    </div>
+  </div>
+
+  <div class="galeria">
+    <div class="item-cuadro">
+      <img src="imagenes/tejidos/chalinas.jpg" alt="Paisaje Andino">
+      <div class="info-cuadro">
+        <p><strong>Chalinas</strong></p>
+        <p>Bufanda tejida en lana de color gris, colocada sobre un maniquí. El diseño destaca por su elegancia y detalle: la parte superior está tejida con puntos cerrados que aportan firmeza y textura, mientras que en la zona central se observa un patrón entrelazado más decorativo que sirve como pasador para sujetar la bufanda de manera ordenada al cuello. Los extremos tienen un acabado con un delicado diseño calado en forma de pequeños bucles, lo que aporta un toque artesanal y sofisticado.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 36</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="imagenes/tejidos/chompa.jpg" alt="Niña Otuzcana">
+      <div class="info-cuadro">
+        <p><strong>Chompas</strong></p>
+        <p>Tejido a crochet en tono beige claro, de diseño calado con puntos abiertos que crean un patrón aireado y elegante. Presenta un escote en “V” pronunciado y mangas tres cuartos, ambas trabajadas con el mismo punto decorativo que combina solidez y transparencia. </p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 42</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="imagenes/tejidos/gorra.jpg" alt="Templo Colonial">
+      <div class="info-cuadro">
+        <p><strong>Gorro</strong></p>
+        <p>Gorro tejido con dos agujas está confeccionado en lana de color azul turquesa, con un diseño en relieve formado por puntos entrelazados que generan un atractivo patrón geométrico. Su borde inferior presenta un acabado elástico en canalé, lo que asegura un ajuste cómodo y firme a la cabeza. Es una prenda abrigadora, práctica y con estilo, ideal para protegerse del frío sin perder un toque moderno y artesanal.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 20</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="imagenes/tejidos/ponchos.jpg" alt="Bordado de los Andes">
+      <div class="info-cuadro">
+        <p><strong>Pochos</strong></p>
+        <p>Tejido a crochet en color negro, con un diseño calado que aporta ligereza y elegancia. La prenda cubre los hombros y parte de la espalda, destacando por su borde inferior adornado con un delicado acabado en puntilla de flores, lo que le da un aire femenino y sofisticado. Es un accesorio versátil que puede usarse tanto en ocasiones formales como en salidas casuales, ideal para complementar vestidos o blusas con un toque artesanal y distinguido.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 43</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+
+    <div class="item-cuadro">
+      <img src="imagenes/tejidos/rebozos.jpg" alt="Mercado Artesanal">
+      <div class="info-cuadro">
+        <p><strong>Rebozos</strong></p>
+        <p>Tejido tradicional de franjas multicolores, característico por su estilo artesanal vibrante. El diseño presenta líneas verticales en tonos intensos como rojo, verde, azul, amarillo, naranja y morado, combinadas de manera armónica. En los extremos, destacan flecos largos y abundantes formados por hilos de los mismos colores, que aportan movimiento y alegría a la pieza.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 35</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+    <div class="item-cuadro">
+      <img src="imagenes/tejidos/rosas.jpg" alt="Mercado Artesanal">
+      <div class="info-cuadro">
+        <p><strong>Rosas Artesanales</strong></p>
+        <p>Rosas decorativas tejidas a crochet en color blanco, diseñadas como adornos navideños. Cada copa tiene un lazo plateado con destellos brillantes en la base, lo que añade un toque festivo y elegante. El tejido está trabajado en puntos cerrados que simulan la forma real de una copa, con detalles en la parte superior que recuerdan un borde ondulado. </p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 15</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+    <div class="item-cuadro">
+      <img src="imagenes/tejidos/tejido.jpg" alt="Mercado Artesanal">
+      <div class="info-cuadro">
+        <p><strong>Tejidos artesanales</strong></p>
+        <p>Tejido a dos agujas en color verde menta, trabajada con un diseño calado en forma de zigzag o chevron. El patrón combina puntos cerrados con pequeñas aberturas que forman líneas diagonales repetitivas, creando un efecto visual atractivo y elegante. En la parte inferior se aprecia una base en punto elástico que da firmeza al inicio del tejido.</p>
+      </div>
+      <div class="acciones-cuadro">
+        <div class="btn-precio">S/. 22</div>
+        <button class="btn-carrito" onclick="window.location.href='pay.html'"><i class="fas fa-shopping-cart"></i> Comprar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Aplica recorte y botón "Ver más" donde sea necesario
+    function aplicarTruncado() {
+      document.querySelectorAll('.item-cuadro .info-cuadro').forEach(info => {
+        const desc = info.querySelector('p:nth-of-type(2)');
+        if (!desc) return;
+
+        // Marca como descripción (para aplicar clamp por CSS)
+        desc.classList.add('descripcion');
+
+        // Forzamos una medición tras render (rAF asegura layout listo)
+        requestAnimationFrame(() => {
+          // Si ya existe botón, no duplicar
+          if (info.querySelector('.btn-ver-mas')) return;
+
+          const needsToggle = desc.scrollHeight > desc.clientHeight + 2;
+          if (needsToggle) {
+            const btn = document.createElement('button');
+            btn.className = 'btn-ver-mas';
+            btn.type = 'button';
+            btn.textContent = 'Ver más';
+            btn.addEventListener('click', () => {
+              const expanded = desc.classList.toggle('expandido');
+              btn.textContent = expanded ? 'Ver menos' : 'Ver más';
+            });
+            info.appendChild(btn);
+          }
+        });
+      });
+    }
+
+    // Ejecutar cuando el DOM está listo y también tras cargar imágenes
+    document.addEventListener('DOMContentLoaded', aplicarTruncado);
+    window.addEventListener('load', aplicarTruncado);
+
+    // Re-aplicar si cambia el tamaño de la ventana (responsivo)
+    let resizeTO;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTO);
+      resizeTO = setTimeout(() => {
+        // Quitar botones existentes y recalcular
+        document.querySelectorAll('.btn-ver-mas').forEach(b => b.remove());
+        document.querySelectorAll('.descripcion').forEach(d => d.classList.remove('expandido'));
+        aplicarTruncado();
+      }, 150);
+    });
+  </script>
+</body>
+</html>
